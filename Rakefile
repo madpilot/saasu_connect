@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "saasu_connect"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Connector to the http://www.saasu.com API"
+    gem.description = "saasu-connect is a wrapper around the http://www.saasu.com API. Not yet complete!"
     gem.email = "myles@madpilot.com.au"
     gem.homepage = "http://github.com/madpilot/saasu_connect"
     gem.authors = ["Myles Eftos"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_development_dependency "mocha", ">= 0"
+    gem.add_dependency "libxml-ruby", ">= 0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

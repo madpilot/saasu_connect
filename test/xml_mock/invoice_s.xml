@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<invoiceResponse>
+  <invoice uid="1952687" lastUpdatedUid="AAAAAAF8O28=">
+    <transactionType>S</transactionType>
+    <date>2009-09-30</date>
+    <contactUid>216883</contactUid>
+    <folderUid>2493</folderUid>
+    <tags>MadPilot Productions</tags>
+    <requiresFollowUp>false</requiresFollowUp>
+    <dueOrExpiryDate>2009-10-14</dueOrExpiryDate>
+    <layout>S</layout>
+    <status>I</status>
+    <invoiceNumber>951</invoiceNumber>
+    <invoiceItems>
+      <serviceInvoiceItem>
+        <description>50% deposit: Jarman McKenna</description>
+        <accountUid>28942</accountUid>
+        <taxCode>G1</taxCode>
+        <totalAmountInclTax>1375.0000</totalAmountInclTax>
+      </serviceInvoiceItem>
+    </invoiceItems>
+    <isSent>false</isSent>
+  </invoice>
+</invoiceResponse>
