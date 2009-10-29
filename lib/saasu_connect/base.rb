@@ -1,5 +1,16 @@
 module SaasuConnect
   class Base < Rest
+    def self.fields(*args)
+      @fields ||= []
+      
+      args.each do |a|
+        @fields << a
+        attr_accessor a
+      end
+      
+      @fields
+    end
+
     def self.mode
       @mode ||= :live
     end

@@ -1,7 +1,9 @@
 $:.unshift File.join(File.dirname(__FILE__))
 
 require 'saasu_connect/rest'
+require 'saasu_connect/writable'
 require 'saasu_connect/base'
+require 'saasu_connect/task'
 require 'saasu_connect/invoice'
 
 module SaasuConnect

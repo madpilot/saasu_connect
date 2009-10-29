@@ -14,18 +14,6 @@ module SaasuConnect
       self.parse_response(SaasuConnect::Rest.get({ :uid => uid }.merge(options)))
     end
 
-    def create!(options = {})
-      post(build_xml, options)
-    end
-
-    def update!(uid = nil, options = {})
-      post(build_xml(uid), options)
-    end
-
-    def delete!(uid, options = {})
-      delete({ :uid => uid }.merge(options))
-    end
-
     # Rubify the camelcase methods
     def method_missing(method_name, *args)
       if method_name.to_s =~ /_/
@@ -42,33 +30,6 @@ module SaasuConnect
     end
   
   protected
-    def build_xml(uid = nil)
-      doc = XML::Document.new
-      doc.root = task = XML::Node.new('task')
-      
-      klass = self.class.to_s.split('::').last
-      if uid
-        task << action = XML::Node.new("update#{klass}")
-        action << parent = XML::Node.new(SaasuConnect::Rest.underscore(klass))
-        parent['uid'] = uid.to_s
-        parent['lastUpdatedUid'] = lastUpdatedUid.to_s
-      else
-        task << action = XML::Node.new("insert#{klass}")
-        action << parent = XML::Node.new(SaasuConnect::Rest.underscore(klass))
-        parent['uid'] = '0'
-      end
-
-      self.instance_variables.each do |v|
-        if v != '@uid' && v != '@lastUpdatedUid'
-          p = send(v[1..-1].to_sym)
-          p = p.strftime('%Y-%m-%d') if p.is_a?(Date)
-          parent << XML::Node.new(v[1..-1], p.to_s)
-        end
-      end
-
-      doc.to_s
-    end
-
     def self.get(options = {})
       begin
         http_get(endpoint(options))
@@ -78,7 +39,6 @@ module SaasuConnect
     end
 
     def self.post(data, options = {})
-      options = { :resource => 'tasks' }.merge(options)
       begin
         http_post(endpoint(options), data)
       rescue SocketError

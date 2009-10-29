@@ -1,6 +1,7 @@
-require "test/unit"
-require "mocha"
-require "lib/saasu_connect"
+require 'rubygems'
+require 'test/unit'
+require 'mocha'
+require 'lib/saasu_connect'
 
 class TestSaasuConnect < Test::Unit::TestCase
   def test_endpoint
@@ -74,6 +75,11 @@ class TestSaasuConnect < Test::Unit::TestCase
     assert_equal 'I', invoice.status
     assert_equal '951', invoice.invoiceNumber
     assert_equal false, invoice.isSent
+  end
+
+  def test_invoice_create
+    SaasuConnect::Rest.expects(:get).returns(load_xml_mock('invoice_s'))
+    invoice = SaasuConnect::Invoice.find(:TransactionType => 's')
   end
 
   def load_xml_mock(name)

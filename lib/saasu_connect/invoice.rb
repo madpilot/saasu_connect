@@ -1,7 +1,9 @@
 module SaasuConnect
   class Invoice < Base
-    attr_accessor :uid, :lastUpdatedUid, :date, :contactUid, :shipToContactUid, :folderUid, :tags, :reference, :summary, :notes, :requiresFollowUp, :dueOrExpiryDate, :layout, :status, :invoiceNumber, :purchaseOrderNumber, :invoiceItems, :quickPayment, :payments, :isSent, :transactionType
-
+    fields :uid, :lastUpdatedUid, :transactionType, :date, :contactUid, :shipToContactUid, :folderUid, :tags, :reference, :summary, :notes, :requiresFollowUp, :dueOrExpiryDate, :layout, :status, :invoiceNumber, :purchaseOrderNumber, :invoiceItems, :quickPayment, :payments, :isSent
+    
+    include Writable
+    
     def uid
       @uid.to_i
     end
