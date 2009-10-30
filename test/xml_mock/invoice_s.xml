@@ -13,7 +13,7 @@
     <invoiceNumber>951</invoiceNumber>
     <invoiceItems>
       <serviceInvoiceItem>
-        <description>50% deposit: Jarman McKenna</description>
+        <description>50% deposit: Acme Inc.</description>
         <accountUid>28942</accountUid>
         <taxCode>G1</taxCode>
         <totalAmountInclTax>1375.0000</totalAmountInclTax>

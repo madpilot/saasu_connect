@@ -78,8 +78,24 @@ class TestSaasuConnect < Test::Unit::TestCase
   end
 
   def test_invoice_create
-    SaasuConnect::Rest.expects(:get).returns(load_xml_mock('invoice_s'))
-    invoice = SaasuConnect::Invoice.find(:TransactionType => 's')
+    invoice = SaasuConnect::Invoice.new()
+    invoice.transaction_type = 'S'
+    invoice.date = Date.parse('2005-09-30')
+    invoice.contact_uid = 22735
+    invoice.folder_uid = 0
+    invoice.summary = "Test POST sale"
+    invoice.notes = "From REST"
+    invoice.requires_follow_up = false
+    invoice.due_or_expiry_date = Date.parse('2005-12-01')
+    invoice.layout = 'S'
+    invoice.status = 'I'
+    invoice.invoice_number = "<Auto Number>"
+    invoice.purchase_order_number = "PO222"
+    invoice.invoice_items << SaasuConnect::ServiceInvoiceItem.new(:description => 'Design and Development of REST WS', :account_uid => 10555, :tax_code => 'G1', :total_amount_incl_tax => 2132.51)
+    invoice.invoice_items << SaasuConnect::ServiceInvoiceItem.new(:description => 'Subscription to XYZ', :account_uid => 10557, :tax_code => 'G1', :total_amount_incl_tax => 11.22)
+
+    SaasuConnect::Tasks.expects(:post).with(load_xml_mock('create_invoice'), {})
+    invoice.create!
   end
 
   def load_xml_mock(name)

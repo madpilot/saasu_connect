@@ -1,5 +1,6 @@
 module SaasuConnect
-  class ServiceInvoiceItem
-    attr_accessor :description, :accountUid, :taxCode, :totalAmountInclTax
+  class ServiceInvoiceItem < Base
+    fields [ :description, :string ], [ :accountUid, :integer ], [ :taxCode, :string ], [ :totalAmountInclTax, :float ]
+    include Writable
   end
 end

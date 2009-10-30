@@ -4,31 +4,23 @@ require 'xml'
 
 module SaasuConnect
   class Rest
-    def initialize(data = {})
-      data.each do |key, value|
-        self.send(key, value)
+    def self.camelize(lower_case_and_underscored_word, first_letter_in_uppercase = true)
+      if first_letter_in_uppercase
+        lower_case_and_underscored_word.to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+      else
+        downcase_first(camelize(lower_case_and_underscored_word))
       end
     end
 
-    def self.find(uid = nil, options = {})
-      self.parse_response(SaasuConnect::Rest.get({ :uid => uid }.merge(options)))
+    def self.underscore(camel_cased_word)
+      camel_cased_word.to_s.gsub(/::/, '/').gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').gsub(/([a-z\d])([A-Z])/,'\1_\2').tr("-", "_").downcase
     end
 
-    # Rubify the camelcase methods
-    def method_missing(method_name, *args)
-      if method_name.to_s =~ /_/
-        camelized = SaasuConnect::Rest.camelize(method_name.to_s, false).to_sym
-        if self.class.method_defined?(camelized)
-          if method_name.to_s.split('').last == "="
-            return send(camelized, args.first) 
-          else
-            return send(camelized) 
-          end
-        end
-      end
-      super
+    def self.downcase_first(camel_cased_word)
+      chars = camel_cased_word.split('')
+      chars.shift.downcase + chars.join('')
     end
-  
+
   protected
     def self.get(options = {})
       begin
@@ -74,19 +66,7 @@ module SaasuConnect
       nil
     end
 
-    def self.camelize(lower_case_and_underscored_word, first_letter_in_uppercase = true)
-      if first_letter_in_uppercase
-        lower_case_and_underscored_word.to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
-      else
-        lower_case_and_underscored_word = lower_case_and_underscored_word.split('_')
-        lower_case_and_underscored_word.shift.downcase + camelize(lower_case_and_underscored_word.join('_'))
-      end
-    end
 
-    def self.underscore(camel_cased_word)
-      camel_cased_word.to_s.gsub(/::/, '/').gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').gsub(/([a-z\d])([A-Z])/,'\1_\2').tr("-", "_").downcase
-    end
- 
     def self.endpoint(options = {})
       options = {
         :access_key => SaasuConnect::Base.access_key,
