@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tasks>
+  <updateInvoice emailToContact="false">
+    <invoice uid="256875" lastUpdatedUid="AAAAAAAVBCc=">
+      <transactionType>S</transactionType>
+      <date>2005-09-15</date>
+      <contactUid>22738</contactUid>
+      <shipToContactUid>22738</contactUid>
+      <tags>Online Sales</tags>
+      <summary>Service Sale 2</summary>
+      <requiresFollowUp>false</requiresFollowUp>
+      <dueOrExpiryDate>2005-12-15</dueOrExpiryDate>
+      <layout>S</layout>
+      <status>I</status>
+      <invoiceNumber>&lt;Auto Number&gt;</invoiceNumber>
+      <purchaseOrderNumber>PO123456789</purchaseOrderNumber>
+      <invoiceItems>
+        <serviceInvoiceItem>
+          <description>LINE 1 LINE 1 LINE 1</description>
+          <accountUid>10568</accountUid>
+          <taxCode>G1,G2</taxCode>
+          <totalAmountInclTax>12345.12</totalAmountInclTax>
+        </serviceInvoiceItem>
+        <serviceInvoiceItem>
+          <description>Testing</description>
+          <accountUid>10567</accountUid>
+          <taxCode>G7</taxCode>
+          <totalAmountInclTax>-123.9</totalAmountInclTax>
+        </serviceInvoiceItem>
+        <serviceInvoiceItem>
+          <description>Testing</description>
+          <accountUid>10569</accountUid>
+          <taxCode>G1</taxCode>
+          <totalAmountInclTax>569.66</totalAmountInclTax>
+        </serviceInvoiceItem>
+      </invoiceItems>
+      <quickPayment>
+        <datePaid>0001-01-01</datePaid>
+        <dateCleared>0001-01-01</dateCleared>
+        <bankedToAccountUid>0</bankedToAccountUid>
+        <amount>0</amount>
+      </quickPayment>
+      <isSent>false</isSent>
+    </invoice>
+    <createAsAdjustmentNote>false</createAsAdjustmentNote>
+  </updateInvoice>
+</tasks>

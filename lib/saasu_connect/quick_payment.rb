@@ -1,5 +1,6 @@
 module SaasuConnect
-  class QuickPayment
-    attr_accessor :datePaid, :dateCleared, :bankedToAccountUid, :amount, :reference, :summary
+  class QuickPayment < Base
+    fields [ :datePaid, :date ], [ :dateCleared, :date ], [ :bankedToAccountUid, :integer ], [ :amount, :float ], [ :reference, :string ], [ :summary, :string ]
+    include Writable
   end
 end

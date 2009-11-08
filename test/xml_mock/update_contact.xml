@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tasks>
+  <updateContact>
+    <contact uid="22730" lastUpdatedUid="AAAAAAAVA8A=">
+      <salutation>Mrs.</salutation>
+      <givenName>Mary</givenName>
+      <familyName>Smith</familyName>
+      <organisationName>Mr. & Mrs. Smith</organisationName>
+      <organisationAbn>67 093 453 886</organisationAbn>
+      <organisationWebsite />
+      <organisationPosition>Director</organisationPosition>
+      <email>mary.smith@mrandmrssmith.com.au</email>
+      <mainPhone>02 4444 4444</mainPhone>
+      <homePhone />
+      <mobilePhone>0444 444 444</mobilePhone>
+      <tags>Customer, IT</tags>
+      <postalAddress />
+      <otherAddress />
+      <isActive>true</isActive>
+    </contact>
+  </updateContact>
+</tasks>
