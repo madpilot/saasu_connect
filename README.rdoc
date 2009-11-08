@@ -1,6 +1,6 @@
 = saasu_connect
 
-Description goes here.
+NOT READY! So don't bother pulling unless you want to help out :P
 
 == Note on Patches/Pull Requests
  
