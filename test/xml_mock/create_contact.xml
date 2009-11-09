@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+  <insertContact>
+    <contact uid="0">
+      <salutation>Mr.</salutation>
+      <givenName>John</givenName>
+      <familyName>Smith</familyName>
+      <organisationName>Saasy.tv</organisationName>
+      <organisationAbn>777888999</organisationAbn>
+      <organisationPosition>Director</organisationPosition>
+      <email>john.smith@saasy.tv</email>
+      <mainPhone>02 9999 9999</mainPhone>
+      <mobilePhone>0444 444 444</mobilePhone>
+      <contactID>XYZ123</contactID>
+      <tags>Gold Prospect, Film</tags>
+      <postalAddress>
+        <street>3/33 Victory Av</street>
+        <city>North Sydney</city>
+        <state>NSW</state>
+        <country>Australia</country>
+      </postalAddress>
+      <otherAddress>
+        <street>111 Elizabeth street</street>
+        <city>Sydney</city>
+        <state>NSW</state>
+        <country>Australia</country>
+      </otherAddress>
+      <isActive>true</isActive>
+      <acceptDirectDeposit>false</acceptDirectDeposit>
+      <directDepositAccountName>John Smith</directDepositAccountName>
+      <directDepositBsb>000000</directDepositBsb>
+      <directDepositAccountNumber>12345678</directDepositAccountNumber>
+      <acceptCheque>false</acceptCheque>
+      <customField1>This is custom field 1</customField1>
+      <customField2>This is custom field 2</customField2>
+      <twitterID>Contact twitter id</twitterID>
+      <skypeID>Contact skype id</skypeID>
+    </contact>
+  </insertContact>
+</tasks>
