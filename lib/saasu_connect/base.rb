@@ -36,6 +36,17 @@ module SaasuConnect
       @fields
     end
 
+    def self.attributes(*args)
+      @attributes ||= []
+
+      args.each do |a|
+        @attributes << a
+        field_accessor a
+      end
+
+      @attributes
+    end
+
     def self.field_accessor(*args)
       # Create mutalators for all of the fields. This will also cast the variable if needed
       args.each do |a|
@@ -43,18 +54,21 @@ module SaasuConnect
         when(:integer)
           class_eval <<-END
             def #{a[0]}
+              return nil unless @#{a[0]}
               @#{a[0]}.to_i
             end
           END
         when(:float)
           class_eval <<-END
             def #{a[0]}
+              return nil unless @#{a[0]}
               @#{a[0]}.to_f
             end
           END
         when(:date)
           class_eval <<-END
             def #{a[0]}
+              return nil unless @#{a[0]}
               return @#{a[0]} if @#{a[0]}.is_a?(Date) || @#{a[0]}.to_s == ""
               Date.parse(@#{a[0]})
             end

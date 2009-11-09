@@ -116,7 +116,8 @@ class TestSaasuConnect < Test::Unit::TestCase
     invoice.status = 'I'
     invoice.invoice_number = "<Auto Number>"
     invoice.purchase_order_number = 'PO123456789'
-    
+    invoice.email_to_contact = false
+
     invoice.invoice_items = [
       SaasuConnect::ServiceInvoiceItem.new(
         :description => 'LINE 1 LINE 1 LINE 1',
@@ -142,13 +143,20 @@ class TestSaasuConnect < Test::Unit::TestCase
       :date_paid => Date.parse('2001-01-01'),
       :date_cleared => Date.parse('2001-01-01'),
       :banked_to_account_uid => 0,
-      :amount => 0
+      :amount => 0.0
     )
 
     invoice.is_sent = false
     
     SaasuConnect::Tasks.expects(:post).with(load_xml_mock('update_invoice'), {})
-    invoice.update!(:create_as_adjustment_note => false)
+    invoice.update!
+  end
+
+  def test_invoice_delete
+    invoice = SaasuConnect::Invoice.new(:uid => 12345)
+    endpoint = SaasuConnect::Invoice.send(:endpoint, :uid => 12345)
+    SaasuConnect::Invoice.expects(:http_delete).with(endpoint)
+    invoice.delete!
   end
 
   def test_contact_update

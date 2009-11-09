@@ -12,13 +12,13 @@ module SaasuConnect
       end
     end
 
-    def delete!(uid, options = {})
-      delete({ :uid => uid }.merge(options))
+    def delete!(options = {})
+      self.class.delete({ :uid => uid }.merge(options))
     end
   
     def to_xml(&block)
       klass = self.class.to_s.split('::').last
-      if uid != 0
+      if uid && lastUpdatedUid
         action = XML::Node.new("update#{klass}")
         action << parent = XML::Node.new(SaasuConnect::Rest.downcase_first(klass))
         parent['uid'] = uid.to_s
@@ -27,6 +27,10 @@ module SaasuConnect
         action = XML::Node.new("insert#{klass}")
         action << parent = XML::Node.new(SaasuConnect::Rest.downcase_first(klass))
         parent['uid'] = '0'
+      end
+        
+      self.class.attributes.each do |a|
+        action[a[0].to_s] = self.send(a[0]).to_s unless self.send(a[0]).nil?
       end
 
       if block_given?
@@ -56,8 +60,13 @@ module SaasuConnect
     def cast_for_xml(field, value)
       value = value.strftime('%Y-%m-%d') if value.is_a?(Date)
      
-      if value.kind_of?(SaasuConnect)
-        value.build_xml
+      if SaasuConnect.constants.include?(klass = value.class.to_s.split('::').last)
+        # The value belongs to the SaasuConnect namespace
+        parent = XML::Node.new(SaasuConnect::Rest.downcase_first(klass))
+        value.build_xml do |n|
+          parent << n
+        end
+        parent
       elsif value.is_a?(Array)
         node = XML::Node.new(field.to_s)
         value.each do |element|

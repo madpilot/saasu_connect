@@ -1,0 +1,6 @@
+Error in Docs:
+
+http://www.saasu.com/api-http-post-tasks/ - Update Service Sale:
+<shipToContactUid>22738</contactUid> should be <shipToContactUid>22738</shipToContactUid>
+
+

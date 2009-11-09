@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <tasks>
   <updateInvoice emailToContact="false">
     <invoice uid="256875" lastUpdatedUid="AAAAAAAVBCc=">
       <transactionType>S</transactionType>
       <date>2005-09-15</date>
       <contactUid>22738</contactUid>
-      <shipToContactUid>22738</contactUid>
+      <shipToContactUid>22738</shipToContactUid>
       <tags>Online Sales</tags>
       <summary>Service Sale 2</summary>
       <requiresFollowUp>false</requiresFollowUp>
@@ -35,13 +35,12 @@
         </serviceInvoiceItem>
       </invoiceItems>
       <quickPayment>
-        <datePaid>0001-01-01</datePaid>
-        <dateCleared>0001-01-01</dateCleared>
+        <datePaid>2001-01-01</datePaid>
+        <dateCleared>2001-01-01</dateCleared>
         <bankedToAccountUid>0</bankedToAccountUid>
-        <amount>0</amount>
+        <amount>0.0</amount>
       </quickPayment>
       <isSent>false</isSent>
     </invoice>
-    <createAsAdjustmentNote>false</createAsAdjustmentNote>
   </updateInvoice>
 </tasks>

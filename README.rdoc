@@ -2,6 +2,10 @@
 
 NOT READY! So don't bother pulling unless you want to help out :P
 
+== TODO
+
+No way to pass in "createAsAdjustmentNote" to Invoice.update!
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
